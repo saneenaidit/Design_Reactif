@@ -1,0 +1,177 @@
+/* =========================
+   Styles de base (Mobile)
+   ========================= */
+
+body {
+  background-color: #dedede;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+header h1,
+h1 {
+  text-align: center;
+  font-size: 32px;
+  margin: 16px 0;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+}
+
+main h2 {
+  text-align: center;
+  font-size: 22px;
+  margin: 8px 0 4px;
+}
+
+p {
+  font-size: 25px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 8px 16px;
+}
+
+/* Reset image default behaviour */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Les blocs de couleurs (chaque div contenant une image + label) */
+div {
+  display: inline-block;    /* en mobile on laisse inline-block mais on force width:100% pour empilement */
+  width: 100%;              /* Vue mobile : 1 div par ligne */
+  box-sizing: border-box;
+  margin: 5px 0;
+  padding: 8px;
+  vertical-align: top;
+  text-align: center;
+  background: transparent;  /* tu peux rajouter une couleur ici si tu veux */
+}
+
+/* image à l'intérieur du div : taille carrée centrée */
+div img {
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin: 8px auto;
+  object-fit: cover; /* garde le ratio et recadre si nécessaire */
+}
+
+/* label sous l'image */
+.label,
+div > p.label {
+  margin: 6px 0 0;
+  font-size: 18px;
+}
+
+/* Footer centré */
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 24px;
+}
+
+/* =========================
+   Styles commentés d'origine (conservés si tu veux les réactiver)
+   ========================= */
+
+/*
+main {
+    border: 5px #000 solid;
+    margin: 10px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+.child {
+    position: relative;
+    display: inline-block;
+    border: 5px black solid;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.label {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+}
+
+.button {
+    display: inline-block;
+    border: 2px solid #000;
+    padding: 5px;
+    border-radius: 25px;
+}
+
+.button:hover {
+    background-color:#fff;
+}
+*/
+
+/* =========================
+   MEDIA QUERY 1 : TABLETTE
+   déclenche à 772px (min-width)
+   - div = 45% largeur
+   - images : max-height 30vh (30% de la hauteur de la fenêtre)
+   - et ajustements pour que deux div tiennent sur une ligne
+   ========================= */
+@media screen and (min-width: 772px) {
+  /* container-like behaviour : permettre wrap pour plusieurs colonnes */
+  body {
+    /* garde le même background ; on pourrait ajouter max-width + centrer si nécessaire */
+  }
+
+  div {
+    display: inline-block;
+    width: 45%;          /* deux cartes côte à côte */
+    margin: 10px 2.5%;
+    box-sizing: border-box;
+    vertical-align: top;
+  }
+
+  /* Limiter la hauteur de l'image à 30% de la hauteur de la fenêtre */
+  div img {
+    width: auto;         /* laisser la largeur s'ajuster */
+    max-height: 30vh;    /* 30% de la hauteur de la fenêtre */
+    height: auto;
+  }
+
+  /* Ajuster les paragraphes et titres pour tablette */
+  p {
+    font-size: 20px;
+  }
+
+  main h2 {
+    font-size: 24px;
+  }
+}
+
+/* =========================
+   MEDIA QUERY 2 : GRAND ÉCRAN
+   déclenche à 998px (min-width)
+   - div = 30% largeur (trois colonnes)
+   - aucune autre modification nécessaire selon la consigne
+   ========================= */
+@media screen and (min-width: 998px) {
+  div {
+    width: 30%;          /* trois cartes côte à côte */
+    margin: 10px 1.66%;
+  }
+
+  /* tu peux réduire la taille du label si tu veux */
+  .label {
+    font-size: 16px;
+  }
+}
